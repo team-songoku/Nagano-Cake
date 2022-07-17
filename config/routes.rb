@@ -7,13 +7,6 @@ Rails.application.routes.draw do
   sessions: 'customer/sessions'
 }
 
-  # scope module: 'customers' do
-  #   root 'items#top'
-  #   resources :items, only: [:show, :index]
-  #   get 'about' => 'items#about'
-  # end
-
-
  namespace :customer do
    root 'items#top'
    resources :items
@@ -25,8 +18,12 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
+namespace :admin do
+   resources :items
+ end
 
-# root :to =>"homes#top"
-# get "home/about"=>"homes#about"
+
+ root :to =>"homes#top"
+ get "home/about"=>"homes#about"
 
 end

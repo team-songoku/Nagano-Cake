@@ -1,4 +1,3 @@
-<h1>商品のindexページ</h1>
 <% @items.each do |item| %>
   <%= item.name %>
   ¥<%= item.without_tax.to_s(:delimited, delimiter: ',') %>
