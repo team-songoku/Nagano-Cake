@@ -1,5 +1,28 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'genres/index'
+    get 'genres/edit'
+  end
+  get 'orders/new'
+  get 'orders/comfirm'
+  get 'orders/index'
+  get 'orders/complete'
+  get 'orders/show'
+  namespace :admin do
+    get 'orders/show'
+  end
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/edit'
+    get 'customers/show'
+  end
+  namespace :admin do
+    get 'homes/top'
+  end
+  get 'shipping_addresses/index'
+  get 'shipping_addresses/edit'
+  get 'cart_items/index'
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
