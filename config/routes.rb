@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-  root to: 'homes#top'
-  get "home/about"=>"homes#about"
+
+root :to =>"homes#top"
+get "home/about"=>"homes#about"
+
+
   
 end
