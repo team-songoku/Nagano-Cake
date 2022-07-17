@@ -1,6 +1,9 @@
 <h1>admin new商品ページ</h1>
-<%= form_with model:@item, url: admin_items_path do |f| %>
+<%= form_with model: @item, url: admin_items_path do |f| %>
 <table>
+  <tr>
+    <th><%= f.file_field :image %></th>
+  </tr>
   <tr>
     <th>商品名</th>
     <th><%= f.text_field :name %></th>
@@ -12,7 +15,6 @@
   <tr>
     <th>ジャンル</th>
     <!--ジャンルcontroller作成してから-->
-    <!--<th><%= f.select :genre_id, [["販売中","false"], ["販売不可","true"]], include_blank: "--選択してください--" %></th>-->
   </tr>
   <tr>
     <th>税抜価格</th>
