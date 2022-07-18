@@ -17,7 +17,13 @@
   </tr>
   <tr>
     <td>税込価格</td>
-    <td><%= (@item.without_tax*1.1).floor.to_s(:delimited, delimiter: ',') %>円</td>
+    <td><%= (@item.with_tax_price).to_s(:delimited, delimiter: ',') %>円</td>
   </tr>
 </table>
+
 <!--個数選択とカートに入れるボタンお願いします！-->
+<%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
+    <%= f.hidden_field :item_id, value: @item.id  %>
+    <%= f.select :quantity, *[1..10] %>
+    <%= f.submit "カートに入れる", class: 'btn btn-outline-secondary' %>
+<% end %>

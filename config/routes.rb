@@ -12,8 +12,8 @@ Rails.application.routes.draw do
    get "homes/about"=>"homes#about"
    get 'customers/mypage' => 'customers#show'
    resources :items
-   resources :customers, only: [:edit] 
-   resources :cart_items
+   resources :customers, only: [:edit]
+   resources :cart_items, only:[:index,:create,:update,:destroy,:destroy_all]
    resources :orders
    resources :shipping_addresses
  end
