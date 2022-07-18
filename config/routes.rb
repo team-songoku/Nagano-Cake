@@ -7,9 +7,15 @@ Rails.application.routes.draw do
   sessions: 'customer/sessions'
 }
 
- namespace :customer do
-   root 'items#top'
+ scope module: :customer do
+   root :to =>"homes#top"
+   get "homes/about"=>"homes#about"
+   get 'customers/mypage' => 'customers#show'
    resources :items
+   resources :customers, only: [:edit] 
+   resources :cart_items
+   resources :orders
+   resources :shipping_addresses
  end
 
   # 管理者用
@@ -21,12 +27,9 @@ Rails.application.routes.draw do
 
 namespace :admin do
    resources :items
+   resources :orders
+   resources :genres
 end
-
-root :to =>"homes#top"
-get "home/about"=>"homes#about"
-get 'customer/mypage' => 'customer#show'
-resources :customer, only: [:edit]
 
 
 end

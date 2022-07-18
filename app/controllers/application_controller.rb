@@ -3,12 +3,12 @@ class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
     
     def after_sign_in_path_for(resource)
-      home_about_path(resource)
+      customers_mypage_path(resource)
     end
 
 
     def after_sign_out_path_for(resource)
-      home_about_path(resource)
+      root_path(resource)
     end
     
 
