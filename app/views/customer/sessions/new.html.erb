@@ -1,6 +1,5 @@
 <h2>ログイン</h2>
 <h3>会員の方はこちらからログイン</h3>
-
 <%= form_with model: @customer, url: customer_session_path, id: 'new_customer', class: 'new_customer' do |f| %>
   <div class="field">
     <%= f.label :email %><br />
