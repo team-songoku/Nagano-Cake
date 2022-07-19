@@ -27,13 +27,13 @@ class Customer::CartItemsController < ApplicationController
 
   def destroy
     @cart_items = CartItem.find(params[:id])
-    @cart_items.save
+    @cart_items.destroy
     redirect_to request.referer
   end
 
 
   def destroy_all
-
+    @cart_items = current_customer.cart_items
     @cart_items.destroy_all
     redirect_to request.referer
   end
@@ -41,6 +41,6 @@ class Customer::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-      params.require(:cart_item).permit(:item_id,:quantity)
+      params.require(:cart_item).permit(:item_id,:quantity,:customer_id)
   end
 end

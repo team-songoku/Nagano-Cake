@@ -13,12 +13,11 @@ Rails.application.routes.draw do
    get 'customers/mypage' => 'customers#show'
    resources :items
    resources :customers, only: [:edit]
-   resources :cart_items, only: [:index,:create,:update,:destroy]
-   resources :cart_items do
+   resources :cart_items, only: [:index,:create,:update,:destroy] do
      collection do
        delete 'destroy_all'
      end
-    end
+   end
    resources :orders, only: [:new,:index,:show,]
    resources :shipping_addresses
  end
