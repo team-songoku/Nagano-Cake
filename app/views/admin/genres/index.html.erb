@@ -12,3 +12,23 @@
     </diV>
   </div>
 
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ジャンル</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="table">
+          <% @genres.each do |genre| %>
+          <tr>
+            <td><%= genre.name %></td>
+            <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-outline-success badge rounded-pill" %></td>
+            <td><%= link_to "削除する", admin_genre_path(genre), method: :delete, data: {confirm: "ほんまに削除してもええですか？"}, class: "btn btn-outline-danger badge rounded-pill" %></td>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
