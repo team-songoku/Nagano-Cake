@@ -1,2 +1,34 @@
-<h1>Customer::Orders#new</h1>
-<p>Find me in app/views/customer/orders/new.html.erb</p>
+<h3>注文情報入力</h3>
+
+<!--@itemとurlの変更忘れずに！-->
+<%= form_with model: @order, url: orders_path do |f| %>
+<div>支払い方法</div>
+<div>
+  <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+  <%= f.label :payment_method,"クレジットカード" %>
+
+  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+  <%= f.label :payment_method,"銀行振込" %>
+</div>
+
+<div>お届け先</div>
+<div>
+  <div>
+  <!--ご自身の住所のラジオボックス-->
+  <%= f.label :own_address, "ご自身の住所" %>
+  </div>
+  <div>
+  <!--登録済み住所のラジオボックス-->
+  <!--登録済み住所のセレクトボックス-->
+  <%= f.label :registered_address, "登録済住所から選択" %>
+  </div>
+  <div>
+  <!--新規届け先のラジオボックス-->
+  <%= f.label :new_address, "新しいお届け先" %>
+  </div>
+</div>
+
+<div>
+  <%= f.submit "確認画面へ進む" %>
+</div>
+<% end %>
