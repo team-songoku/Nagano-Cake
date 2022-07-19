@@ -20,7 +20,7 @@ Rails.application.routes.draw do
      end
    end
    resources :orders, only: [:new,:index,:show,]
-   resources :customers, only: [:edit,:update,:destroy] 
+   resources :customers, only: [:edit,:update,:destroy]
    resources :shipping_addresses
  end
 
