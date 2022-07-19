@@ -1,2 +1,64 @@
-<h1>Customer::Orders#confirm</h1>
-<p>Find me in app/views/customer/orders/confirm.html.erb</p>
+<h3>注文情報確認</h3>
+
+<!--カートアイテムの中身-->
+<table class="table table-bordered">
+  <thead class="table-warning">
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item.item.name %></td>
+      <td><%= cart_item.item.with_tax_price %></td>
+      <td><%= cart_item.quantity %></td>
+      <td><%= cart_item.subtotal %>円</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!--金関係-->
+<table class="table table-bordered">
+  <tr>
+    <th>送料</th>
+    <td><!--postageカラムはまだ入っていない--> 円</td>
+  </tr>
+  <tr>
+    <th>商品合計</th>
+    <td><%= @total %>円</td>
+  </tr>
+  <tr>
+    <th>請求金額</th>
+    <td><!--postageカラム入れてから-->円</td>
+  </tr>
+</table>
+
+<!--支払い方法-->
+<table>
+  <tr>
+    <th>支払い方法</th>
+    <td><%= @order.payment_method_i18n %></td>
+  </tr>
+  <tr>
+    <th>お届け先</th>
+    <td><!--address出来てから--></td>
+  </tr>
+</table>
+
+<!--注文ボタンと　あとよくわからない-->
+<%= form_with model:@order, url: orders_path, method: :post do |f| %>
+  <%= f.submit "注文を確定する", class:"btn btn-danger btn-lg rounded-pill" %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :payment_method %>
+  <%= f.hidden_field :post_code %>
+  <%= f.hidden_field :postage %>
+  <%= f.hidden_field :status %>
+  <%= f.hidden_field :total_payment %>
+  <%= hidden_field_tag :address_select, @address_select %>
+<% end %>
