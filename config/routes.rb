@@ -11,14 +11,16 @@ Rails.application.routes.draw do
    root :to =>"homes#top"
    get "homes/about"=>"homes#about"
    get 'customers/mypage' => 'customers#show'
+   get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+   patch '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
    resources :items
-   resources :customers, only: [:edit]
    resources :cart_items, only: [:index,:create,:update,:destroy] do
      collection do
        delete 'destroy_all'
      end
    end
    resources :orders, only: [:new,:index,:show,]
+   resources :customers, only: [:edit,:update,:destroy] 
    resources :shipping_addresses
  end
 
