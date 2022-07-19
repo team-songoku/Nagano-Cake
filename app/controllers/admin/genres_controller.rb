@@ -13,7 +13,8 @@ class Admin::GenresController < ApplicationController
     else
       @genre = Genre.all
       @genres = Genre.new(genre_params)
-      render 'index'
+      # Ajax
+      # render 'index'
     end
   end
 
@@ -29,11 +30,12 @@ class Admin::GenresController < ApplicationController
       render 'edit'
     end
   end
-
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy
-    redirect_to request.referer
+    @genres = Genre.all
+    # Ajax
+    # redirect_to request.referer
   end
 
 
