@@ -1,2 +1,47 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <diV class="row">
+    <div class="col">
+      <h1><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h1>
+    </div>
+  </diV>
+  <div class="row">
+    <div class="mx-auto">
+      <table class="table table-hover">
+        <tr>
+          <th>会員ID</th>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
