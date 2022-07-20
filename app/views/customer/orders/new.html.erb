@@ -27,8 +27,17 @@
     <%= f.select :address_id, options_from_collection_for_select(current_customer.shipping_addresses, :id, :address_display) %>
   </div>
   <div>
-  <%= f.radio_button :address_select, 3 %>
-  <%= f.label :address_select, "新しいお届け先" %>
+    <%= f.radio_button :address_select, 3 %>
+    <%= f.label :address_select, "新しいお届け先" %>
+
+    <%= f.label :shipping_postal_code, "郵便番号(ハイフンなし)" %>
+    <%= f.text_field :shipping_postal_code %>
+
+    <%= f.label :shipping_address, "住所" %>
+    <%= f.text_field :shipping_address %>
+
+    <%= f.label :shipping_name, "宛名" %>
+    <%= f.text_field :shipping_name %>
   </div>
 </div>
 

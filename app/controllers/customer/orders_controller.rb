@@ -17,6 +17,17 @@ class Customer::OrdersController < ApplicationController
     @cart_items = CartItem.all
     @total =  @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order = current_customer.order.new(order_params)
+    if params[:order][:address_select] == "1"
+      @order.shipping_postal_code = current_customer.post_code
+      @order.shipping_address = current_customer.address
+      @order.shipping_name = current_customer.last_name+current_customer.first_name
+    elsif params[:order][:address_select] == "2"
+      @shipping_address = ShippingAddress.find(params[:order][:address_id])
+      @order.shipping_postal_code = @shipping_address.postal_code
+      @order.shipping_address = @shipping_address.address
+      @order.shipping_name = @shipping_address.name
+    else params[:order][:address_select] == "3"
+    end
   end
 
   def complete
@@ -25,6 +36,6 @@ class Customer::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method)
+    params.require(:order).permit(:payment_method, :shipping_postal_code, :shipping_address, :shipping_name)
   end
 end

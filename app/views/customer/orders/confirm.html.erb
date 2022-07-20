@@ -46,19 +46,13 @@
   </tr>
   <tr>
     <th>お届け先</th>
-    <td><!--address出来てから--></td>
+    <td><%= @order.shipping_postal_code %></td>
+    <td><%= @order.shipping_address %></td>
+    <td><%= @order.shipping_name %></td>
   </tr>
 </table>
 
-<!--注文ボタンと　あとよくわからない-->
+<!--注文ボタン-->
 <%= form_with model:@order, url: orders_path, method: :post do |f| %>
   <%= f.submit "注文を確定する", class:"btn btn-danger btn-lg rounded-pill" %>
-  <%= f.hidden_field :address %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :payment_method %>
-  <%= f.hidden_field :post_code %>
-  <%= f.hidden_field :postage %>
-  <%= f.hidden_field :status %>
-  <%= f.hidden_field :total_payment %>
-  <%= hidden_field_tag :address_select, @address_select %>
 <% end %>
