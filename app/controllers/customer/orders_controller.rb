@@ -4,18 +4,10 @@ class Customer::OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def create
-  end
-
-  def index
-  end
-
-  def show
-  end
-
   def confirm
     @cart_items = CartItem.all
     @total =  @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @amount =  order.postage
     @order = current_customer.order.new(order_params)
     if params[:order][:address_select] == "1"
       @order.shipping_postal_code = current_customer.post_code
@@ -30,7 +22,22 @@ class Customer::OrdersController < ApplicationController
     end
   end
 
+  def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    if @order.save
+      redirect_to items_path
+    else
+    end
+  end
+
   def complete
+  end
+
+  def index
+  end
+
+  def show
   end
 
   private

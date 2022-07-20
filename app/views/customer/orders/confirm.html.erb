@@ -26,7 +26,7 @@
 <table class="table table-bordered">
   <tr>
     <th>送料</th>
-    <td><!--postageカラムはまだ入っていない--> 円</td>
+    <td><%= @order.postage %>円</td>
   </tr>
   <tr>
     <th>商品合計</th>
@@ -34,7 +34,7 @@
   </tr>
   <tr>
     <th>請求金額</th>
-    <td><!--postageカラム入れてから-->円</td>
+    <td><%= (@order.subtotal.floor).to_s(:delimited) %>円</td>
   </tr>
 </table>
 
