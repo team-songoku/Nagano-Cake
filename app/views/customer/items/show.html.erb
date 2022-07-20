@@ -24,6 +24,6 @@
 <!--個数選択とカートに入れるボタンお願いします！-->
 <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
     <%= f.hidden_field :item_id, value: @item.id  %>
-    <%= f.select :quantity, *[1..10] %>
+    <%= f.select :quantity, *[1..20],{include_blank: '個数選択'},required: true %>
     <%= f.submit "カートに入れる", class: 'btn btn-outline-secondary' %>
 <% end %>

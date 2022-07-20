@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   sessions: 'customer/sessions'
   }
 
+
  scope module: :customer do
    root :to =>"homes#top"
    get "homes/about"=>"homes#about"
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
    post '/orders/confirm' => 'orders#confirm'
    get '/orders/complete' => 'orders#complete'
    resources :customers, only: [:edit,:update,:destroy]
-   resources :shipping_addresses
+   resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
  end
 
   # 管理者用
@@ -35,8 +36,9 @@ Rails.application.routes.draw do
 
 namespace :admin do
    resources :items
-   resources :orders
-   resources :genres
+   resources :orders, only: [:index,:create,:edit,:update]
+   resources :genres, only: [:index,:create,:edit,:update,:destroy]
+   resources :customers, only: [:index, :show, :edit, :update]
 end
 
 
