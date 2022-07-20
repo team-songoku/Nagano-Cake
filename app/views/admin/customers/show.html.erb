@@ -1,7 +1,7 @@
 <div class="container">
   <diV class="row">
     <div class="col">
-      <h1><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h1>
+      <h1 class="style text-center"><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h1>
     </div>
   </diV>
   <div class="row">
@@ -13,33 +13,53 @@
         </tr>
         <tr>
           <th>氏名</th>
-          <td></td>
+          <td><%= @customer.last_name + @customer.first_name %></td>
         </tr>
         <tr>
           <th>フリガナ</th>
-          <td></td>
+          <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
         </tr>
         <tr>
           <th>郵便番号</th>
-          <td></td>
+          <td><%= @customer.post_code %></td>
         </tr>
         <tr>
           <th>住所</th>
-          <td></td>
+          <td><%= @customer.address %></td>
         </tr>
         <tr>
           <th>電話番号</th>
-          <td></td>
+          <td><%= @customer.phone_number %></td>
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <td></td>
+          <td><%= @customer.email %></td>
         </tr>
         <tr>
           <th>会員ステータス</th>
-          <td></td>
+          <td>
+            <% if @customer.is_deleted %>
+              <span style="color:gray">退会</span>
+            <% else %>
+              <span style="color:red">有効</span>
+            <% end %>
+          </td>
         </tr>
       </table>
+      <div class="row">
+        <div>
+          <%=link_to "顧客一覧を見る", admin_customers_path, class: "btn btn-outline-info rounded-pill"%>
+        </div>
+
+        <div>
+          <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-outline-success rounded-pill"%>
+        </div>
+        <!--注文履歴一覧ができればpathを変える-->
+        <div>
+          <%= link_to "注文履歴一覧を見る", admin_order_path(@customer), class: "btn btn-outline-primary rounded-pill"%>
+        </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
