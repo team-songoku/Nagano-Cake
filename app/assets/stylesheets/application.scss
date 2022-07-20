@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// .main-visual,.item-new-container {
+//   font-family: 'Kaushan', cursive, sans-serif;
+// }
+
+/*トップページ部分*/
+.main-visual {
+  width: 1500px;
+  height: 600px;
+  margin: 0 auto;
+  background-image: image-url('cake_bake.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.main-visual-content {
+  width: 1500px;
+  height: 500px;
+  text-align: center;
+  padding-top: 105px;
+}
+
+.main-visual-text {
+  color: #FFFFFF;
+  font-size: 25px;
+  font-family: 'Kaushan', cursive, sans-serif;
+  
+}
+
+.new-item-list {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.new_item_image {
+  width: 270px;
+  box-sizing:border-box
+}
+
+
+
+
