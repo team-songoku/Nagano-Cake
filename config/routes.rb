@@ -7,12 +7,37 @@ Rails.application.routes.draw do
   sessions: 'customer/sessions'
 }
 
+
+ scope module: :customer do
+   root :to =>"homes#top"
+   get "homes/about"=>"homes#about"
+   get 'customers/mypage' => 'customers#show'
+   get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+   patch '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+   resources :items
+   resources :cart_items, only: [:index,:create,:update,:destroy] do
+     collection do
+       delete 'destroy_all'
+     end
+   end
+   resources :orders, only: [:new,:index,:show,]
+   resources :customers, only: [:edit,:update,:destroy] 
+   resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
+ end
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-  root to: 'homes#top'
-  
+
+namespace :admin do
+   resources :items
+   resources :orders, only: [:index,:create,:edit,:update]
+   resources :genres, only: [:index,:create,:edit,:update,:destroy]
+   resources :customers, only: [:index, :show, :edit, :update]
+end
+
+
 end
