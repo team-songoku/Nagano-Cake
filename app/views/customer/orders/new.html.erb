@@ -14,16 +14,16 @@
 <div>お届け先</div>
 <div>
   <div>
-  <!--ご自身の住所のラジオボックス-->
+  <%= f.radio_button :address_select, 1 %>
   <%= f.label :address_select, "ご自身の住所" %>
   </div>
   <div>
-  <!--登録済み住所のラジオボックス-->
+  <%= f.radio_button :address_select, 2 %>
   <!--登録済み住所のセレクトボックス-->
   <%= f.label :address_select, "登録済住所から選択" %>
   </div>
   <div>
-  <!--新規届け先のラジオボックス-->
+  <%= f.radio_button :address_select, 3 %>
   <%= f.label :address_select, "新しいお届け先" %>
   </div>
 </div>
