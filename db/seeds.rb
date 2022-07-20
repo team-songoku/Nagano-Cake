@@ -10,4 +10,5 @@
 #通常の場合
 Admin.create(email: "songoku@gmail.com",password:"111111")
 
+Admin.create(email: "macho@gmail.com",password:"123456")
 
