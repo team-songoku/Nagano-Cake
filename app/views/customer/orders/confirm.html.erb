@@ -34,7 +34,7 @@
   </tr>
   <tr>
     <th>請求金額</th>
-    <td><%= (@order.subtotal.floor).to_s(:delimited) %>円</td>
+    <td><%= @total + @order.postage %>円</td>
   </tr>
 </table>
 
