@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 
 # ジャンルテーブル作成の際にコメントアウト外して下さい。
 # これがあるとジャンルカラムにnot_nullがあるので商品の新規投稿できません
-#   belongs_to :genre
+  belongs_to :genre
   has_many :cart_items
   # has_many :order_details
 
