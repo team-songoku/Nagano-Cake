@@ -1,3 +1,27 @@
-<h1>Customer::Homes#top</h1>
-<p>Find me in app/views/customer/homes/top.html.erb</p>
 <%= notice %>
+<div class="main-visual">
+  <div class="main-visual-content">
+    <p class="main-visual-text">
+      ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員ではない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。<br>
+    </p>
+  </div>
+</div>
+
+<div class="item-new-container">
+  <h4>新着商品</h4>
+  <div class="new-item-list">
+    <% @items.each do |item| %>
+      <div class="new_item_image">
+        <%= link_to item_path(item) do %>
+          <%= image_tag item.image, size: "150x150" %>
+        <% end %>
+        <div><%= link_to item.name,item_path(item) %></div>
+        ¥<%= item.without_tax.to_s(:delimited, delimiter: ',') %><br>
+      </div>
+    <% end %>
+    <%= link_to "全ての商品を見る", items_path %>
+  </div>
+</div>

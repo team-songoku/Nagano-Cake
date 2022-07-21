@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "customer/registrations",
   sessions: 'customer/sessions'
-}
+  }
+
 
  scope module: :customer do
    root :to =>"homes#top"
@@ -19,8 +20,11 @@ Rails.application.routes.draw do
        delete 'destroy_all'
      end
    end
-   resources :orders, only: [:new,:index,:show,]
-   resources :customers, only: [:edit,:update,:destroy] 
+
+   post '/orders/confirm' => 'orders#confirm'
+   get '/orders/complete' => 'orders#complete'
+   resources :orders, only: [:new, :create, :index, :show]
+   resources :customers, only: [:edit,:update,:destroy]
    resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
  end
 
@@ -32,9 +36,10 @@ Rails.application.routes.draw do
 
 
 namespace :admin do
-   resources :items
-   resources :orders
-   resources :genres
+   resources :items, only: [:new,:index,:create,:show,:edit,:update,:destroy]
+   resources :orders, only: [:index,:create,:edit,:update]
+   resources :genres, only: [:index,:create,:edit,:update,:destroy]
+   resources :customers, only: [:index, :show, :edit, :update]
 end
 
 
