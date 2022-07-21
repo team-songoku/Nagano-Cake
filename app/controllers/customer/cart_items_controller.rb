@@ -3,7 +3,7 @@ class Customer::CartItemsController < ApplicationController
   def index
     @cart_item = CartItem.all
     #inject(0) で初期値をゼロにする⇨その０をsumとして定義する
-    #cart_itemsのなっかに入っている１つのデータをitemに入れる(eachみたいな感じ)
+    #cart_itemのなかに入っている１つのデータをitemに入れる(eachみたいな感じ)
     @total =  @cart_item.inject(0) { |sum, item| sum + item.subtotal }
   end
 
