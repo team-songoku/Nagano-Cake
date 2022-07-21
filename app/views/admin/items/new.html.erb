@@ -6,19 +6,19 @@
   </tr>
   <tr>
     <th>商品名</th>
-    <th><%= f.text_field :name %></th>
+    <th><%= f.text_field :name, placeholder: "商品名記入" %></th>
   </tr>
   <tr>
     <th>商品説明</th>
-    <th><%= f.text_field :introduction %></th>
+    <th><%= f.text_field :introduction, placeholder: "ここに説明文の記述" %></th>
   </tr>
   <tr>
     <th>ジャンル</th>
-    <!--ジャンルcontroller作成してから-->
+    <th><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %></th>
   </tr>
   <tr>
     <th>税抜価格</th>
-    <th><%= f.text_field :without_tax %></th>
+    <th><%= f.text_field :without_tax, placeholder: "入力" %></th>
   </tr>
   <tr>
     <th>販売ステータス</th>

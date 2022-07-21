@@ -8,5 +8,5 @@ class Item < ApplicationRecord
 #税込価格を標示する記述ここを変えると一括ですべてのtaxが変わる
  def with_tax_price
     (without_tax * 1.1).floor
- end
+ end 
 end
