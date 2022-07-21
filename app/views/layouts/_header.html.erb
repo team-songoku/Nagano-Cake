@@ -13,7 +13,7 @@
 
           <nav class="nav navbar-nav text-white mt-1 mr-5">
             <span class="customer-name text-muted">
-            ようこそ、<%= current_customer.first_name %><%= current_customer.last_name %>さん！
+            ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！
             </span>
           </nav>
 
@@ -51,31 +51,31 @@
 
           <li class="nav-item mx-3">
             <%= link_to admin_customers_path, class: 'btn btn-outline-secondary' do %>
-              <i class="fa-solid fa-users-line"></i>会員一覧
+              <i class="fas fa-users fa-2x"></i>会員一覧
             <% end %>
           </li>
 
           <li class="nav-item mx-3">
             <%= link_to admin_orders_path, class: 'btn btn-outline-secondary' do %>
-              <i class="fa-solid fa-memo-circle-info"></i>注文履歴一覧
+              <i class="fas fa-file-alt fa-2x"></i>注文履歴一覧
             <% end %>
           </li>
 
           <li class="nav-item mx-3">
             <%= link_to admin_genres_path, class: 'btn btn-outline-secondary' do %>
-              <i class="fa-duotone fa-bars"></i>ジャンル一覧
+              <i class="fas fa-bars fa-2x"></i>ジャンル一覧
             <% end %>
           </li>
 
           <li class="nav-item mx-3">
             <%= link_to destroy_customer_session_path, method: :delete, class: 'btn btn-outline-secondary' do %>
-             <i class="fas fa-sign-out-alt  fa-2x"></i>ログアウト
+             <i class="fas fa-sign-out-alt fa-2x"></i>ログアウト
             <% end %>
           </li>
         <% else %>
           <li class="nav-item mx-3">
             <%= link_to homes_about_path, class: 'btn btn-outline-secondary' do %>
-            <i class="fas fa-smile fa-2x"></i>About
+            <i class="fas fa-grin-wink fa-2x"></i>About
             <% end %>
           </li>
           <li class="nav-item mx-3">
@@ -90,7 +90,7 @@
           </li>
           <li class="nav-item mx-3">
             <%= link_to new_customer_session_path, class: 'btn btn-outline-secondary' do %>
-              <i class="fas fa-sign-in-alt  fa-2x"></i>ログイン
+              <i class="fas fa-sign-in-alt fa-2x"></i>ログイン
             <% end %>
           </li>
         <% end %>

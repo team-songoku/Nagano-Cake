@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2022_07_16_155330) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2022_07_16_155330) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.integer "postage"
+    t.integer "postage", default: 800
     t.integer "total_amount"
     t.integer "status", default: 0
     t.integer "payment_method", default: 0
