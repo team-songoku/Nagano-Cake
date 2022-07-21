@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "customer/registrations",
   sessions: 'customer/sessions'
-}
+  }
 
 
  scope module: :customer do
@@ -20,7 +20,10 @@ Rails.application.routes.draw do
        delete 'destroy_all'
      end
    end
-   resources :orders, only: [:new,:index,:show,]
+
+   post '/orders/confirm' => 'orders#confirm'
+   get '/orders/complete' => 'orders#complete'
+   resources :orders, only: [:new, :create, :index, :show]
    resources :customers, only: [:edit,:update,:destroy]
    resources :shipping_addresses, only: [:index,:create,:edit,:update,:destroy]
  end
