@@ -1,30 +1,42 @@
-<h2>配送先登録/一覧</h2>
+<div class="row mt-5">
+  <div class="col">
+    <h1 class="text-info text-center">配送先登録/一覧</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="mx-auto">
     
- 
-<%= form_with model: @shipping_address, url: shipping_addresses_path do |f| %>
-    <div class="field">
-        <%= f.label :"郵便番号（ハイフンなし）" %>
-        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-    </div>
-    
-    <div class="field">
-        <%= f.label :"住所" %>
-        <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-    </div>
-    
-    <div class="field">
-        <%= f.label :"宛名" %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-        <%= f.submit "新規登録" %>
-    </div>
-<% end %>
+  <%= form_with model: @shipping_address, url: shipping_addresses_path do |f| %>
+    <table class="table">
+      <tr class="h5">
+        <th><%= f.label :"郵便番号（ハイフンなし）" %></th>
+        <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+      </tr>
+      <tr class="h5">
+        <th><%= f.label :"住所" %></th> 
+        <td><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
+      </tr>
+      <tr class="h5">
+        <th><%= f.label :"宛名" %></th>
+        <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= f.submit "新規登録",class: "h5 btn btn-outline-warning d-block mx-auto rounded-pill btn-lg'" %></td>
+      </tr>  
+    </table>
+  <% end %>
+  </div>
+</div>  
   
-    <table>
+<div class="row">
+  <div class="mx-auto">
+    <table class="table h6">
       <thead>
         <tr>
           <th>郵便番号</th>
           <th>住所</th>
           <th>宛名</th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -34,9 +46,11 @@
           <td><%= shipping_address.postal_code %></td>
           <td><%= shipping_address.address %></td>
           <td><%= shipping_address.name %></td>
-          <td><%= link_to "編集する", edit_shipping_address_path(shipping_address.id) %></td>
-          <td><%= link_to "削除する", shipping_address_path(shipping_address.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <td><%= link_to "編集する", edit_shipping_address_path(shipping_address.id),class: "btn btn-outline-success rounded-pill btn-lg'" %></td>
+          <td><%= link_to "削除する", shipping_address_path(shipping_address.id), class: "btn btn-outline-danger rounded-pill btn-lg'",method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
         </tr>
       </tbody>
      <% end %>
     </table>
+  </div>
+</div>
