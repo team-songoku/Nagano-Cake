@@ -7,7 +7,7 @@ class Customer::OrdersController < ApplicationController
   def confirm
     @cart_items = CartItem.all
     @total =  @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @order = current_customer.order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     if params[:order][:address_select] == "1"
       @order.shipping_postal_code = current_customer.post_code
       @order.shipping_address = current_customer.address
@@ -44,10 +44,11 @@ class Customer::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   private
