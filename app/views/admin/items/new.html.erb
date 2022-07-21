@@ -8,28 +8,28 @@
       <div class="row">
         <div class="mx-auto">
           <table class="table table-bordered">
-            <tr class"table-active">
-              <th>img</th>
+            <tr>
+              <th class="table-info">Image</th>
               <th><%= f.file_field :image %></th>
             </tr>
             <tr>
-              <th>商品名</th>
+              <th class="table-info">商品名</th>
               <th><%= f.text_field :name, placeholder: "商品名記入" %></th>
             </tr>
             <tr>
-              <th>商品説明</th>
+              <th class="table-info">商品説明</th>
               <th><%= f.text_field :introduction, placeholder: "ここに説明文の記述" %></th>
             </tr>
             <tr>
-              <th>ジャンル</th>
+              <th class="table-info">ジャンル</th>
               <th><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %></th>
             </tr>
             <tr>
-              <th>税抜価格</th>
+              <th class="table-info">税抜価格</th>
               <th><%= f.text_field :without_tax, placeholder: "価格入力" %></th>
             </tr>
             <tr>
-              <th>販売ステータス</th>
+              <th class="table-info">販売ステータス</th>
               <th>
                 <%= f.radio_button :is_active, true %>
                 <%= f.label '販売中' %>
