@@ -9,7 +9,7 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(@item)
     else
       @items = Item.all
-    render 'index'
+    render 'new'
     end
   end
 
@@ -30,6 +30,7 @@ class Admin::ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to admin_item_path(@item)
     else
+      @items = Item.all
       render 'index'
     end
   end
@@ -37,6 +38,6 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :introduction, :without_tax, :is_active)
+    params.require(:item).permit(:image, :name, :introduction, :without_tax, :is_active, :genre_id )
   end
 end
