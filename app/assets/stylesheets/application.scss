@@ -20,6 +20,18 @@
   box-sizing: border-box;
 }
 
+// background-color
+header{
+  background-color: pink!important;
+}
+
+body{
+  background-color: #f5deb3!important;
+}
+
+.col{
+  font-family: serif;
+}
 /*トップページ部分*/
 .main-visual {
   width: 1500px;
@@ -41,7 +53,7 @@
   color: #FFFFFF;
   font-size: 25px;
   font-family: 'Kaushan', cursive, sans-serif;
-  
+
 }
 
 .new-item-list {
