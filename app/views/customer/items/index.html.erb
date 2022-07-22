@@ -1,10 +1,16 @@
-<h1>商品のindexページ</h1>
-<% @items.each do |item| %>
-  <% if item.image.attached? %>
-    <%= image_tag item.image, size: "100x100" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "100x100" %>
-  <% end %>
-  <%= link_to item.name ,item_path(item) %>
-  ¥<%= item.without_tax.to_s(:delimited, delimiter: ',') %>
-<% end %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+        <h1 class="text-info text-center">商品のindexページ</h1>
+        <% @items.each do |item| %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "100x100" %>
+          <% end %>
+          <%= link_to item.name ,item_path(item) %>
+          ¥<%= item.without_tax.to_s(:delimited, delimiter: ',') %>
+        <% end %>
+    </div>
+  </div>
+</div>
