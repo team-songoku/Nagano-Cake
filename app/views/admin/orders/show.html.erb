@@ -51,10 +51,11 @@
       <td><%= order_detail.price %></td>
       <td><%= order_detail.quantity %></td>
       <td><%= order_detail.price * order_detail.quantity %></td>
-      <td></td>
-      <td></td>
+      <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+        <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %></td>
+        <td><%= f.submit "更新" %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
 </table>
-
