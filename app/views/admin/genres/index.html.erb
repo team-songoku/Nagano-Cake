@@ -1,15 +1,15 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <h1 class="text-info text-center">ジャンル一覧・追加</h1>
+        <h1 class="text-danger text-center">Genre list・Addtion</h1>
       </div>
     </div>
       <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
       <div class="row">
         <div class="mx-auto">
-          <%= f.label :name,"ジャンル名" %>
+          <%= f.label :name,"Genre name", class: "text-danger" %>
           <%= f.text_field :name %>
-          <%= f.submit "新規登録", class: 'btn btn-outline-warning rounded-pill btn-lg' %>
+          <%= f.submit "New registration", class: 'btn btn-outline-warning rounded-pill btn-lg' %>
         </div>
       </diV>
       <% end %>
@@ -21,7 +21,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th class="table-info">ジャンル</th>
+            <th class="table-warning text-danger">Genre</th>
             <th></th>
             <th></th>
           </tr>

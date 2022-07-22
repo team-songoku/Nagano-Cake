@@ -1,7 +1,7 @@
   <div class="container">
     <div class="row mt-5">
       <div class=col>
-        <h1 class="text-info text-center">管理者側商品詳細画面</h1>
+        <h1 class="text-danger text-center">Manager side products detail</h1>
       </div>
     </div>
     <div class="row">
@@ -15,23 +15,23 @@
         </div>
         <table class="table table-bordered">
           <tr>
-            <td class="table-info">商品名</td>
+            <td class="table-warning">商品名</td>
             <td><%= @item.name %></td>
           </tr>
           <tr>
-            <td class="table-info">商品説明</td>
+            <td class="table-warning">商品説明</td>
             <td><%= @item.introduction %></td>
           </tr>
           <tr>
-            <td class="table-info">ジャンル</td>
+            <td class="table-warning">ジャンル</td>
             <td><%= @item.genre.name %></td>
           </tr>
           <tr>
-            <td class="table-info">税込価格</td>
+            <td class="table-warning">税込価格</td>
             <td><%= (@item.without_tax*1.1).floor.to_s(:delimited, delimiter: ',') %>円</td>
           </tr>
           <tr>
-            <td class="table-info">販売ステータス</td>
+            <td class="table-warning">販売ステータス</td>
             <td>
               <% if @item.is_active == true %>
                 販売中
@@ -45,8 +45,8 @@
       </div>
     </div>
     <div class="text-center">
-      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-outline-success rounded-pill btn-lg" %>
+      <%= link_to "Edit", edit_admin_item_path(@item.id), class: "btn btn-outline-success rounded-pill btn-lg" %>
       &emsp;　　　　　&emsp;
-      <%= link_to "削除する",admin_item_path(@item.id), method: :delete, data: {confirm: "ほんまに削除しますか？"}, class: "btn btn-outline-danger rounded-pill btn-lg" %>
+      <%= link_to "Delete",admin_item_path(@item.id), method: :delete, data: {confirm: "ほんまに削除しますか？"}, class: "btn btn-outline-danger rounded-pill btn-lg" %>
     </div>
   </div>
