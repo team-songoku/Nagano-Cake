@@ -1,3 +1,72 @@
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col">
+        <h1 class="text-info text-center">注文履歴詳細</h1>
+      </div>
+    </diV>
+    <div class="row">
+      <div class="mx-auto">
+        <table class="table table-hover">
+          <thead class="table-info">
+            <tr>
+              <td>購入者</td>
+              <td><%= @order.customer.first_name + @order.customer.last_name %></td>
+            </tr>
+            <tr>
+              <td>注文日</td>
+              <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+            </tr>
+            <tr>
+              <td>配送先</td>
+              <td>
+                〒<%= @order.shipping_postal_code %>
+                <%= @order.shipping_address %></br>
+                <%= @order.shipping_name %>
+              </td>
+            </tr>
+            <tr>
+              <td>支払方法</td>
+              <td><%= @order.payment_method_i18n %></td>
+            </tr>
+            <tr>
+              <td>注文ステータス</td>
+              <td>
+                <%= form_with model: @order, url:admin_order_path, method: :patch  do |f| %>
+                  <%= f.select :status, Order.statuses_i18n.invert %>
+                  <%= f.submit "更新" %>
+                <% end %>
+              </td>
+            </tr>
+          </head>
+        </table>
+      </div>
+    </div>
+
+      <!--注文した商品一覧-->
+      <table class = "table table-bordered">
+        <thead>
+          <tr>
+            <td>商品名</td>
+            <td>単価（税込）</td>
+            <td>個数</td>
+            <td>小計</td>
+            <td>制作ステータス</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.quantity %></td>
+            <td><%= order_detail.price * order_detail.quantity %></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
 <h1>注文履歴詳細</h1>
 
 <table class="table">
@@ -59,3 +128,5 @@
     <% end %>
   </tbody>
 </table>
+
+

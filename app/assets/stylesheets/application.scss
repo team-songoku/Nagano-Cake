@@ -22,7 +22,7 @@
 
 // background-color
 header{
-  background-color: pink!important;
+  background-color: brown!important;
 }
 
 body{
@@ -31,6 +31,10 @@ body{
 
 .col{
   font-family: serif;
+}
+
+.decoration{
+  text-decoration: none;
 }
 /*トップページ部分*/
 .main-visual {
@@ -65,3 +69,11 @@ body{
   width: 270px;
   box-sizing:border-box
 }
+
+footer{
+  background-color: brown!important;
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+  width: 100%;
+}
+
