@@ -21,12 +21,17 @@
 }
 
 // background-color
+body{
+  background-color: #f5deb3!important;
+}
+
 header{
   background-color: brown!important;
 }
 
-body{
-  background-color: #f5deb3!important;
+.main{
+  width: 100%;
+
 }
 
 .col,h1{
@@ -72,8 +77,8 @@ body{
 
 footer{
   background-color: brown!important;
-  position: absolute;/*←絶対位置*/
-  bottom: 0; /*下に固定*/
   width: 100%;
+  // position: absolute;/*←絶対位置*/
+  // bottom: 0; /*下に固定*/
 }
 
