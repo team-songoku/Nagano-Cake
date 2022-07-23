@@ -16,7 +16,11 @@
     <% @items.each do |item| %>
       <div class="new_item_image">
         <%= link_to item_path(item) do %>
-          <%= image_tag item.image, size: "150x150" %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "150x150" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "150x150" %>
+          <% end %>
         <% end %>
         <div><%= link_to item.name,item_path(item) %></div>
         ¥<%= item.without_tax.to_s(:delimited, delimiter: ',') %><br>

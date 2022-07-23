@@ -8,6 +8,7 @@ class Customer::OrdersController < ApplicationController
     @cart_items = CartItem.all
     @total =  @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order = current_customer.orders.new(order_params)
+    # 配送先のradio_button選択分岐。
     if params[:order][:address_select] == "1"
       @order.shipping_postal_code = current_customer.post_code
       @order.shipping_address = current_customer.address
@@ -25,6 +26,7 @@ class Customer::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     if @order.save
+      # カートの中身の情報も一緒にsaveする。
       current_customer.cart_items.each do |cart_item|
         @order_detail = OrderDetail.new
         @order_detail.item_id = cart_item.item_id
