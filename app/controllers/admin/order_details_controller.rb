@@ -8,6 +8,11 @@ class Admin::OrderDetailsController < ApplicationController
         @order_detail.order.status = "in_making"
         @order_detail.order.save
       end
+      #order_detailsのorder_idの数が制作完了(completed)の数と同じになる時にif以下の処理を実行。
+      if @order_detail.order.order_details.count == @order_detail.order.order_details.where(making_status:"completed").count
+        @order_detail.order.status = "preparing_shipping"
+        @order_detail.order.save
+      end
       redirect_to admin_order_path(@order_detail.order.id)
     else
       render 'index'
