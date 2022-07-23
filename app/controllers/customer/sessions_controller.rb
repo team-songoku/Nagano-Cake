@@ -7,22 +7,15 @@ class Customer::SessionsController < Devise::SessionsController
     
     
   
+    def after_sign_in_path_for(resource)
+      root_path(resource)
+    end
 
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+    def after_sign_out_path_for(resource)
+      root_path(resource)
+    end
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
-  # end
   
   protected
     # 退会しているかを判断するメソッド
@@ -32,19 +25,13 @@ class Customer::SessionsController < Devise::SessionsController
     ## アカウントを取得できなかった場合、このメソッドを終了する
     return if !@customer
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-    if @customer.valid_password?(params[:customer][:password])
+    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
+      flash[:alret] = "退会済みです。新規会員登録を行なってください。"
+       redirect_to new_customer_registration_path
       ## 【処理内容3】
     end
   end
   
-    def after_sign_in_path_for(resource)
-      customers_mypage_path(resource)
-    end
-
-
-    def after_sign_out_path_for(resource)
-      root_path(resource)
-    end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
