@@ -10,7 +10,7 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(@item)
     else
       @items = Item.all
-    render 'new'
+      render 'new'
     end
   end
 
