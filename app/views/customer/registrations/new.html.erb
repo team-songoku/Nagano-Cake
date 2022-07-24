@@ -11,18 +11,18 @@
             <table class = "table table-border">
               <tr>
                 <th><%= f.label :"名前" %></th>
-                <td>
-                  <%= f.label :"(姓)" %>
+                  <td><%= f.label :"(姓)" %> </td>
+                  <td>
                   <%= f.text_field :last_name, autofocus: true, autocomplete: "name" %>
-                  <%= f.label :"(名)" %>
+                  <%= f.label :"(名)" %>&emsp;
                   <%= f.text_field :first_name, autofocus: true, autocomplete: "name" %>
-                </td>
+                  </td>
               </tr>
 
               <tr>
                 <th><%= f.label :"フリガナ" %></th>
+                <td><%= f.label :"(セイ)" %></td>
                 <td>
-                  <%= f.label :"(セイ)" %>
                   <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "name" %>
                   <%= f.label :"(メイ)" %>
                   <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "name" %>
@@ -31,22 +31,26 @@
 
               <tr>
                 <th> <%= f.label :"メールアドレス" %></th>
+                <td></td>
                 <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
               </tr>
 
               <tr>
                 <th><%= f.label :"郵便番号（ハイフンなし）" %></th>
+                <td></td>
                 <td><%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %></td>
               </tr>
 
               <tr>
                 <th><%= f.label :"住所" %></th>
+                <td></td>
                 <td><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
               </tr>
 
 
               <tr>
                 <th><%= f.label :"電話番号" %></th>
+                <td></td>
                 <td><%= f.telephone_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
               </tr>
 
@@ -57,6 +61,7 @@
                   <em>(<%= @minimum_password_length %>文字以上)</em>
                   <% end %><br/>
                 </th>
+                <td></td>
                 <td>
                   <%= f.password_field :password, autocomplete: "new-password" %>
                 </td>
@@ -64,10 +69,12 @@
 
               <tr>
                 <th><%= f.label :"パスワード（確認用）" %></th>
+                <td></td>
                 <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
               </tr>
 
               <tr>
+                <td></td>
                 <td></td>
                 <td class="text-center"><%= f.submit "新規登録",class: "btn btn-warning" %></td>
               </tr>
