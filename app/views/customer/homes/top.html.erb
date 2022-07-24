@@ -26,6 +26,8 @@
         ¥<%= item.without_tax.to_s(:delimited, delimiter: ',') %><br>
       </div>
     <% end %>
-    <%= link_to "全ての商品を見る", items_path %>
+    <div>
+     <%= link_to "全ての商品を見る", items_path,class: "btn btn-outline-dark" %>
+    </div>
   </div>
 </div>
