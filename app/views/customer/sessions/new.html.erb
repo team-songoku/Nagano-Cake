@@ -4,7 +4,7 @@
         <div class="text-danger h3">
           <%= flash[:alret] %>
         </div>
-        <h2>ログイン</h2>
+        <h2 class="text-info">ログイン</h2>
         <h4>会員の方はこちらからログイン</h4>
         <%= form_with model: @customer, url: customer_session_path, id: 'new_customer', class: 'new_customer' do |f| %>
           <div class="field">
@@ -25,7 +25,7 @@
           <% end %>
         
           <div class="actions">
-            <%= f.submit "ログイン" %>
+            <%= f.submit "ログイン",class: "btn btn-primary" %>
           </div>
         <% end %>
         <%= render "customer/shared/links" %>
