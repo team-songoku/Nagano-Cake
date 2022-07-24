@@ -14,6 +14,7 @@ Rails.application.routes.draw do
    get 'customers/mypage' => 'customers#show'
    get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
    patch '/customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+   get "search" => "searches#search"
    resources :items
    resources :cart_items, only: [:index,:create,:update,:destroy] do
      collection do
