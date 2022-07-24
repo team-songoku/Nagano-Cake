@@ -2,7 +2,6 @@
     <div class="row">
       <div class="col">
         <h1 class="text-danger text-center">Genre list・Addtion</h1>
-        <%= paginate @genres %>
       </div>
     </div>
       <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
@@ -31,7 +30,7 @@
           <%= render "admin/genres/genre_table", genres: @genres %>
         </tbody>
       </table>
-
+        <%= paginate @genres %>
     </div>
   </div>
 
