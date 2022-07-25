@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h1 class="text-danger text-center">Members list</h1>
+    </div>
+  </diV>
+  <div class="row">
+    <div class="mx-auto">
+      <table class="table table-hover">
+        <thead class="table-warning">
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td class="decoration">
+              <%= link_to admin_customer_path(customer) do %>
+                <span style="color:brown"><%= customer.last_name + customer.first_name %></span>
+              <% end %>
+            </td>
+            <td><%= customer.email %></td>
+            <td>
+              <% if customer.is_deleted %>
+              <span style="color:red">退会</span>
+              <% else %>
+              <span style="color:green">有効</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

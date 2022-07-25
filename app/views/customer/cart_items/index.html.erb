@@ -1,0 +1,68 @@
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-12 mb-3">
+        <h1 class="text-danger text-center">Shopping Cart</h1>
+      </div>
+    </div>
+      <div class="row">
+        <div class="mx-auto">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th colspan="5">
+                  <div class="text-right">
+                    <%= button_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "ほんまに削除しますか?" }, class: "btn btn-outline-danger rounded-pill" %>
+                  </div>
+                </th>
+              </tr>
+              <tr class="table-warning">
+                <th>商品名</th>
+                <th>単価(税込)</th>
+                <th>数量</th>
+                <th>小計</th>
+                <th class="colspan-1"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @cart_item.each do |cart_item| %>
+                <tr>
+                  <td><%= cart_item.item.name %></td>
+                  <td><%= cart_item.item.with_tax_price %></td>
+                  <td>
+                    <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local:true do |f| %>
+                    <%= f.select :quantity, *[1..20], { selected: cart_item.quantity }%>
+                    <%= f.submit "変更", class: 'btn btn-outline-success rounded-pill' %>
+                    <% end %>
+                  </td>
+                  <td><%= cart_item.subtotal %>円</td>
+                  <td><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, data: {confirm: "ほんまに削除しますか?" }, class: "btn btn-outline-danger rounded-pill" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <table class="table table-bordered">
+            <div class="container">
+              <div class="row justify-content-end">
+                <div class="col-sm">
+                  <tbody>
+                    <tr>
+                      <td>合計金額</td>
+                      <td><%= @total %>円</td>
+                    </tr>
+                  </tbody>
+                </div>
+              </div>
+            </div>
+          </table>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12 text-center">
+     <%= link_to "買い物を続ける", root_path, class: "btn btn-outline-success rounded-pill btn-lg" %>
+     &emsp;　　　　　　　&emsp;
+     <%= link_to "情報入力に進む", new_order_path, class: "btn btn-outline-info rounded-pill btn-lg" %>
+    </div>
+  </div>

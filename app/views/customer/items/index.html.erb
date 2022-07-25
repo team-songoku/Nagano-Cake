@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h1 class="text-danger text-center">Product List</h1>
+    </div>
+  </div>
+   <div class="row mt-5">
+        <% @items.each do |item| %>
+          <div class="col">
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "150x150" %><br>
+          <% else %>
+            <%= image_tag 'no_image', size: "150x150" %><br>
+          <% end %>
+            <%= link_to item.name ,item_path(item) %><br>
+            ¥<%= item.without_tax.to_s(:delimited, delimiter: ',') %>
+          </div>
+        <% end %>
+    </div> 
+</div>

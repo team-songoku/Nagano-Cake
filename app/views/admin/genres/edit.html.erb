@@ -1,0 +1,16 @@
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-danger text-center">Genre edit</h1>
+      </div>
+    </div>
+      <%= form_with model: @genre, url: admin_genre_path,local: true do |f| %>
+        <div class="row">
+          <div class="mx-auto">
+            <%= f.label :name,"Genre name", class: "text-danger" %>
+            <%= f.text_field :name %>
+            <%= f.submit "Update", class: "btn btn-outline-success rounded-pill btn-md" %>
+          </div>
+        </div>
+      <% end %>
+  </div>

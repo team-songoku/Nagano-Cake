@@ -1,0 +1,47 @@
+  <div class="container">
+    <div class="row mt-5">
+      <div class=col>
+        <h1 class="text-danger text-center">Product newl registration</h1>
+      </div>
+    </div>
+    <%= form_with model: @item, url: admin_items_path do |f| %>
+      <div class="row">
+        <div class="mx-auto">
+          <table class="table table-bordered">
+            <tr>
+              <th class="table-warning">Image</th>
+              <th><%= f.file_field :image %></th>
+            </tr>
+            <tr>
+              <th class="table-warning">商品名</th>
+              <th><%= f.text_field :name, placeholder: "商品名記入" %></th>
+            </tr>
+            <tr>
+              <th class="table-warning">商品説明</th>
+              <th><%= f.text_field :introduction, placeholder: "ここに説明文の記述" %></th>
+            </tr>
+            <tr>
+              <th class="table-warning">ジャンル</th>
+              <th><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %></th>
+            </tr>
+            <tr>
+              <th class="table-warning">税抜価格</th>
+              <th><%= f.text_field :without_tax, placeholder: "価格入力" %></th>
+            </tr>
+            <tr>
+              <th class="table-warningr">販売ステータス</th>
+              <th>
+                <%= f.radio_button :is_active, true %>
+                <%= f.label '販売中' %>
+                <%= f.radio_button :is_active, false %>
+                <%= f.label '販売停止中' %>
+              </th>
+            </tr>
+          </table>
+          <div class="text-right">
+            <%= f.submit "New registration", class: "btn btn-outline-success rounded-pill btn-lg" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>

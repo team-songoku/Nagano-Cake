@@ -1,0 +1,36 @@
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-danger text-center">Genre list・Addtion</h1>
+      </div>
+    </div>
+      <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
+      <div class="row">
+        <div class="mx-auto">
+          <%= f.label :name,"Genre name", class: "text-danger" %>
+          <%= f.text_field :name %>
+          <%= f.submit "New registration", class: 'btn btn-outline-warning rounded-pill btn-lg' %>
+        </div>
+      </diV>
+      <% end %>
+  </div>
+
+  <div class="row">
+  <div class="col-4"></div>
+    <div class="col-4 text-center">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="table-warning text-danger">Genre</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="genre_table">
+          <%= render "admin/genres/genre_table", genres: @genres %>
+        </tbody>
+      </table>
+        <%= paginate @genres %>
+    </div>
+  </div>
+
