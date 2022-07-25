@@ -22,33 +22,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-gem 'devise'
-
-gem 'enum_help'
-
-gem 'kaminari','~> 1.2.1'
-rails g kaminari:config
-rails g kaminari:views default
-
-bundle install
-
-rails g devise:install
-
-【顧客用】
-rails g devise Customer
-
-【管理者用】
-rails g devise Admin
-
-【顧客用】
-rails g devise:controllers customer
-
-【管理者用】
-rails g devise:controllers admin
-
-【顧客用】
-rails g devise:views customers
-
-【管理者用】
-rails g devise:views admins
